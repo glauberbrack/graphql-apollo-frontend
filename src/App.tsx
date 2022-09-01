@@ -1,27 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-import request from "./api/request";
-import { gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
+
+const GET_USERS = gql`
+  {
+    getUsers {
+      name
+      age
+    }
+  }
+`;
 
 function App() {
-  const createUser = async () => {
-    await request.mutate({
-      mutation: gql`
-        mutation {
-          createUser(name: "John Doe", age: 28) {
-            name
-            age
-          }
-        }
-      `,
-    });
-  };
+  const { data, loading, error } = useQuery(GET_USERS);
 
-  useEffect(() => {
-    createUser();
-  }, []);
+  console.log(data);
+
+  if (loading || error) return null;
 
   return (
     <div className="App">
