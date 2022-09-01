@@ -2,11 +2,11 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 
-const GET_USERS = gql`
+const GRAPHQL_MUTATIONS = gql`
   {
-    getUsers {
+    createUser(name: "John Doe Grandfather", age: 40) {
       name
       age
     }
@@ -14,7 +14,7 @@ const GET_USERS = gql`
 `;
 
 function App() {
-  const { data, loading, error } = useQuery(GET_USERS);
+  const [createUser, { data, loading, error }] = useMutation(GRAPHQL_MUTATIONS);
 
   console.log(data);
 
