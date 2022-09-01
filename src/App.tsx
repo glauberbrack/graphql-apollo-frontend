@@ -6,15 +6,11 @@ import request from "./api/request";
 import { gql } from "@apollo/client";
 
 function App() {
-  const getUsers = async () => {
-    await request.query({
-      query: gql`
-        query {
-          getUsers {
-            name
-            age
-          }
-          getUser(name: "Glauber Brack") {
+  const createUser = async () => {
+    await request.mutate({
+      mutation: gql`
+        mutation {
+          createUser(name: "John Doe", age: 28) {
             name
             age
           }
@@ -24,7 +20,7 @@ function App() {
   };
 
   useEffect(() => {
-    getUsers();
+    createUser();
   }, []);
 
   return (
