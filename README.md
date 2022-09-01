@@ -19,7 +19,7 @@
 <p align="center" style="width: 100%; display: flex; flex-direction: row; justify-content: center; margin: 20px 0;">
   <a href="#rocket-techs" style="margin: 0 10px">Description</a> |
   <a href="#notebook-running"style="margin: 0 10px">Running</a> |
-  <a href="#notebook-running"style="margin: 0 10px">Documentation</a>|
+  <a href="#notebook-running"style="margin: 0 10px">Documentation</a>
 </p>
 <br>
 
