@@ -1,8 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+import request from "./api/request";
+import { gql } from "@apollo/client";
 
 function App() {
+  const getUsers = async () => {
+    await request.query({
+      query: gql`
+        query {
+          getUsers {
+            name
+            age
+          }
+          getUser(name: "Glauber Brack") {
+            name
+            age
+          }
+        }
+      `,
+    });
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
